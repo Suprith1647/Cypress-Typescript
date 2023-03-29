@@ -7,21 +7,20 @@ describe('Browser Window Handling', () => {
     beforeEach(function () {
         browserWindow.visit()
         cy.viewport(1280, 800)
+        browserWindow.clickAlertcard();
+        browserWindow.clickBrowserWindow();
         Cypress.on('uncaught:exception', (err, runnable) => {
             return false
         })
-        browserWindow.clickAlertcard();
-        browserWindow.clickBrowserWindow();
-
     })
-    it('Verification of Browser Window 1 ', () => {
+    it('Verification of New Tab ', () => {
         browserWindow.clickNewtabBtn();
 
     })
-    it('Verification of Browser Window 2 ', () => {
+    it('Verification of New Window ', () => {
         browserWindow.clickNewWindowbtn();
     })
-    it('Verification of Browser Window 3 ', () => {
+    it('Verification of New Window Message ', () => {
         browserWindow.clickNewWindowmsgBtn();
     })
 })
