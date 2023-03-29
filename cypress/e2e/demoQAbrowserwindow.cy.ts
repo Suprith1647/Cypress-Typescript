@@ -4,29 +4,24 @@ const browserWindow = new BrowserWindow()
 
 describe('Browser Window Handling', () => {
 
-    before(function () {
+    beforeEach(function () {
         browserWindow.visit()
         cy.viewport(1280, 800)
         Cypress.on('uncaught:exception', (err, runnable) => {
             return false
         })
-
-    })
-    it('Verification of Browser Window ', () => {
         browserWindow.clickAlertcard();
         browserWindow.clickBrowserWindow();
-        //browserWindow.clickNewtabBtn();
-        //browserWindow.clickNewWindowbtn();
-        cy.window().then(win =>{
-        cy.spy(win,'open').as('messageWindow')
-        })
-        cy.get('#messageWindowButton').click();
-        cy.get('@messageWindow').should('have.been.calledOnceWith','','MsgWindow')
-        .its('firstCall.returnValue')
-        .then((childWindow)=>{
-         expect(childWindow.document.body.innerText).to.include('Knowledge')
-     })   
-})
-})
 
-  
+    })
+    it('Verification of Browser Window 1 ', () => {
+        browserWindow.clickNewtabBtn();
+
+    })
+    it('Verification of Browser Window 2 ', () => {
+        browserWindow.clickNewWindowbtn();
+    })
+    it('Verification of Browser Window 3 ', () => {
+        browserWindow.clickNewWindowmsgBtn();
+    })
+})

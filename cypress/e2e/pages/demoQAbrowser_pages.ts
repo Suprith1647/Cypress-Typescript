@@ -1,9 +1,6 @@
 export class BrowserWindow {
 
 
-
-
-
     
     visit() {
         cy.visit(Cypress.config('baseUrl'))
@@ -27,5 +24,16 @@ export class BrowserWindow {
         })
         cy.get('#windowButton').click();
         cy.get('@windowopen').should('be.calledWith',pop_url)
+    }
+    clickNewWindowmsgBtn(){
+        cy.window().then(win =>{
+            cy.spy(win,'open').as('messageWindow')
+            })
+            cy.get('#messageWindowButton').click();
+            cy.get('@messageWindow').should('have.been.calledOnceWith','','MsgWindow')
+            .its('firstCall.returnValue')
+            .then((childWindow)=>{
+             expect(childWindow.document.body.innerText).to.include('Knowledge')
+         })   
     }
 }
