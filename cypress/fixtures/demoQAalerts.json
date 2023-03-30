@@ -1,0 +1,10 @@
+{
+
+    "alertText": "You clicked a button",
+    "alertTimertext": "This alert appeared after 5 seconds",
+    "alertConfirmText" : "Do you confirm action?",
+    "alertConfirmData" : "You selected Ok",
+    "alertPromptText" : "Suprith",
+    "alertpromptData" :"You entered Suprith"
+
+}

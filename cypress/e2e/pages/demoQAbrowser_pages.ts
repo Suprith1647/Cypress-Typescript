@@ -18,8 +18,16 @@ export class BrowserWindow {
         cy.url().should('include', '/browser-windows');
     }
     clickNewtabBtn(){
-        cy.get(this.newtab_Btn).invoke('removeAttr','target').click();
-        //cy.url().should('include','/sample');
+        // cy.get(this.newtab_Btn).invoke('removeAttr','target').click();
+        // //cy.url().should('include','/sample');
+        const url= "/sample"
+        cy.window().then(win =>{
+            const stub= cy.stub(win,'open').as('newtab')
+        })
+        cy.get(this.newtab_Btn).click();
+        cy.get('@newtab').should('be.calledWith',url)
+
+
     }
     clickNewWindowbtn(){
         const pop_url= "/sample"
