@@ -3,6 +3,7 @@ import { defineConfig } from "cypress";
 const { beforeRunHook, afterRunHook } = require('cypress-mochawesome-reporter/lib');
 
 export default defineConfig({
+  chromeWebSecurity: false,
   reporter: 'cypress-mochawesome-reporter',
   reporterOptions: {
     charts: true,
@@ -10,14 +11,15 @@ export default defineConfig({
     embeddedScreenshots: true,
     inlineAssets: true,
     saveAllAttempts: false,
+
     // "video": {
     //   "baseDir": "cypress/videos",
     //   "failuresOnly": true,
     //   "filenamePattern": "${specName}-${timestamp}"
     // }
-   // "video": true,
+    // "video": true,
   },
-  
+
   e2e: {
     baseUrl: "https://demoqa.com/",
     setupNodeEvents(on, config) {
@@ -27,10 +29,13 @@ export default defineConfig({
         await beforeRunHook(details);
       });
 
+
       on('after:run', async () => {
         console.log('override after:run');
         await afterRunHook();
+
       });
+
     },
   },
 });
