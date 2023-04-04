@@ -15,7 +15,10 @@ describe('Books Store Functionality', () => {
     it('Verification of Book Store ', () => {
         cy.fixture('demoQAbooks').then((data) => {
             booksPage.clickBooks();
-            booksPage.clickLogincard();   
+            booksPage.clickLogincard();
+            booksPage.clickNewuser();    
+            booksPage.verificationOfCaptcha();
+            booksPage.fillNewuser(data.firstname, data.lastname, data.username, data.password); 
             booksPage.verifyLogin(data.username,data.password);
             booksPage.verifyProfile();
             booksPage.verifyBookstore();
