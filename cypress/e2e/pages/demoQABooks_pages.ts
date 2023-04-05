@@ -60,10 +60,10 @@ export class BooksPage {
         cy.get(this.frame_locator).iframe().as('recaptchaFrame');
         cy.get('@recaptchaFrame').should('be.visible');
         cy.get('@recaptchaFrame')
-            .find(this.captcha_locator)
-            .should('be.visible')
-            .click();
-            cy.wait(2000);
+       .find(this.captcha_locator)
+       .should('be.visible')
+       .click();
+        cy.wait(5000);
     }
 
     verifyProfile() {

@@ -25,6 +25,7 @@ describe('Modal Functionality', () => {
         cy.fixture('demoQAmodal').then((data) => {
             modalPage.clickSmallmodalBtn();
             handleModalText().should('contain', data.smallmodalText);
+            cy.wait(3000);
         })
     })
     it('Verification large Modal ', () => {
