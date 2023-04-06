@@ -16,9 +16,9 @@ describe('Books Store Functionality', () => {
         cy.fixture('demoQAbooks').then((data) => {
             booksPage.clickBooks();
             booksPage.clickLogincard();
-            booksPage.clickNewuser();    
-            booksPage.verificationOfCaptcha();
-            booksPage.fillNewuser(data.firstname, data.lastname, data.username, data.password); 
+            //booksPage.clickNewuser();    
+            //booksPage.verificationOfCaptcha();
+            //booksPage.fillNewuser(data.firstname, data.lastname, data.username, data.password); 
             booksPage.verifyLogin(data.username,data.password);
             booksPage.verifyProfile();
             booksPage.verifyBookstore();

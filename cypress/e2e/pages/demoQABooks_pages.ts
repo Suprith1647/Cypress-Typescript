@@ -19,6 +19,7 @@ export class BooksPage {
     delete_book = '.buttonWrap > .text-right > #submit';
     delete_popup = '#closeSmallModal-ok';
 
+
     visit() {
         cy.visit(Cypress.config('baseUrl'))
     }
@@ -51,12 +52,12 @@ export class BooksPage {
         cy.get(this.username_text).type(username);
         cy.get(this.password_text).type(password);
         cy.get(this.registeration_btn).click();
-        cy.get(this.registeration_btn).click();
         cy.get(this.goto_btn).click();
         cy.url().should('include', '/login');
     }
 
     verificationOfCaptcha() {
+
         cy.get(this.frame_locator).iframe().as('recaptchaFrame');
         cy.get('@recaptchaFrame').should('be.visible');
         cy.get('@recaptchaFrame')

@@ -23,6 +23,7 @@ export class ModalPage {
         cy.get(this.small_modelbtn).click();
         cy.get(this.small_closebtn).click();
         cy.url().should('include', '/modal-dialogs');
+    
     }
     clickLargemodalBtn() {
         cy.get(this.large_modelbtn).click();
